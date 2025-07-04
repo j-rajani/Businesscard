@@ -148,14 +148,7 @@ body, div, p, h1, h2, h3, a, button {
   </style>
 </head>
 <body>
-  <script>
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (!isMobile) {
-    document.body.innerHTML = "<h2>This site is for mobile only.</h2>";
-    // Optionally, stop JS execution
-    throw new Error("Desktop device not allowed");
-  }
-</script>
+
   <img src="Jeeten_rajani_1.jpg" alt="Jeeten Rajani" class="half-screen-image" />
   <div class="overlay"></div>
   <div class="name-text">JEETEN<br>RAJANI</div>
@@ -234,6 +227,14 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
   </script>
+    <script>
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) {
+    document.body.innerHTML = "<h2>This site is for mobile only.</h2>";
+    // Optionally, stop JS execution
+    throw new Error("Desktop device not allowed");
+  }
+</script>
 </body>
 </html>
 
