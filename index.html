@@ -226,34 +226,12 @@ body, div, p, h1, h2, h3, a, button {
   contactModal.style.display = "flex";
   contactMenu.style.display = "none";
 }
-
-
+    window.addEventListener('DOMContentLoaded', () => {
+  if (!isMobileDevice()) {
+    document.body.innerHTML = '<div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:Poppins, sans-serif; font-size:2em; color:#333;">This is a mobile site.</div>';
+  }
 });
   </script>
-  <script>
-  function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }
 
-  window.addEventListener('DOMContentLoaded', () => {
-    if (!isMobileDevice()) {
-      document.body.innerHTML = `
-        <div style="
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          font-family: Poppins, sans-serif;
-          font-size: 2em;
-          color: #333;
-          text-align: center;
-          padding: 20px;
-        ">
-          This is a mobile site.
-        </div>
-      `;
-    }
-  });
-</script>
 </body>
 </html>
