@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-    (function() {
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
-        .test(navigator.userAgent);
+<script>
+  (function () {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
+      .test(navigator.userAgent);
 
-      if (!isMobile) {
-        document.write("<h2>This site is for mobile devices only.</h2>");
-        throw new Error("Desktop device blocked");
-      }
-    })();
-  </script>
+    if (!isMobile) {
+      document.documentElement.innerHTML = `
+        <head><title>Mobile Only</title></head>
+        <body style="font-family: sans-serif; text-align: center; margin-top: 100px;">
+          <h1>This site is for mobile devices only.</h1>
+          <p>Please open it on your phone or tablet.</p>
+        </body>
+      `;
+      throw new Error("Blocked desktop access.");
+    }
+  })();
+</script>
   <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeeten Rajani | Mobile Card</title>
