@@ -227,14 +227,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
   </script>
-    <script>
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (!isMobile) {
-    document.body.innerHTML = "<h2>This site is for mobile only.</h2>";
-    // Optionally, stop JS execution
-    throw new Error("Desktop device not allowed");
-  }
-</script>
 </body>
 </html>
 
