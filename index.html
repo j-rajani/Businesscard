@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeeten Rajani | Mobile Card</title>
+  <style>
+body, div, p, h1, h2, h3, a, button {
+  -webkit-user-select: none;  /* Safari */
+  -moz-user-select: none;     /* Firefox */
+  -ms-user-select: none;      /* IE10+/Edge */
+  user-select: none;          /* Standard */
+}
+    html {
+      height: 100%;
+      background: linear-gradient(to bottom, #2c2c2c 0%, #000000 75%);
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      background: transparent;
+    }
+    .half-screen-image {
+      width: 100vw;
+      height: 65vh;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%);
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.95));
+      pointer-events: none;
+    }
+    .name-text {
+      position: absolute;
+      top: 50%;
+      left: 10vw;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3em;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 2px;
+      z-index: 1;
+    }
+    .social-icons {
+      position: absolute;
+      top: 65%;
+      left: 10vw;
+      display: flex;
+      gap: 20px;
+      z-index: 2;
+    }
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+      filter: brightness(0) invert(1);
+    }
+    .about-box {
+      position: absolute;
+      top: 72%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90vw;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 20px;
+      color: white;
+      font-size: 1em;
+      line-height: 1.5;
+      z-index: 2;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      text-align: left;
+    }
+    #saveContactBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: white;
+      color: black;
+      border-radius: 25px;
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 0.9em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 3;
+      cursor: pointer;
+    }
+    #contactMenu {
+      display: none;
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 15px;
+      backdrop-filter: blur(8px);
+      z-index: 4;
+      flex-direction: column;
+      gap: 10px;
+      height:Auto;
+      width:100px;
+    }
+    #contactModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 5;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-inner {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+    }
+    .modal-inner a {
+      display: inline-block;
+      margin-top: 10px;
+      background: black;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .modal-inner button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 8px;
+      background: #ddd;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <img src="Jeeten_rajani_1.jpg" alt="Jeeten Rajani" class="half-screen-image" />
+  <div class="overlay"></div>
+  <div class="name-text">JEETEN<br>RAJANI</div>
+  <div class="social-icons">
+    <a href="https://wa.me/256752220999"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" /></a>
+    <a href="https://www.linkedin.com/in/jeeten-rajani-33150131?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app  "><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" /></a>
+    <a href="https://x.com/jrrajani?t=LN7S_o6clD-jYSYej67SKQ&s=08 "><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X" /></a>
+    <a href="https://www.facebook.com/share/1JqgADMqfm/"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" /></a>
+  </div>
+  <div class="about-box">
+    <h2>About Me</h2>
+    <p>Businessman with 25+ years of experience working and living in East Africa.</p>
+  </div>
+  <div id="saveContactBtn">+ Add Contact</div>
+  <div id="contactMenu" style="display: none;">
+    <img src="resized_fctl_logo.jpg" onclick="openModal(0)" />
+    <img src="sinapse_logo_1.jpg" onclick="openModal(1)" />
+    <img src="resized_40650347-b8ef-4b62-b58b-9d20fb3044c6.png" onclick="openModal(2)" />
+    <img src="resized_1a63ac73-f42c-43c4-9427-b65c35f8c20e.png" onclick="openModal(3)" />
+  </div>
+  <div id="contactModal">
+    <div class="modal-inner">
+      <h2 id="modalTitle">Business Name</h2>
+      <p id="modalTitleRole">Title:</p>
+      <p id="modalWebsite"><a href="#" target="_blank" rel="noopener noreferrer">Website</a></p>
+      <p id="modalPhone">Phone:</p>
+      <p id="modalEmail">Email:</p>
+      <a id="vcardLink" download>Save Contact</a><br><br>
+      <button onclick="document.getElementById('contactModal').style.display='none'">Close</button>
+    </div>
+  </div>
+  <script>
+    const saveContactBtn = document.getElementById("saveContactBtn");
+    const contactMenu = document.getElementById("contactMenu");
+    const contactModal = document.getElementById("contactModal");
+
+    const businesses = [
+      { name: "Four Corners Transform Ltd", title: "Managing Director", website: "https://fctl.io", phone: "+256 752 220999", email: "j.rajani@fctl.io", color: "#003366"},
+      { name: "Sinapse Education Oy", title: "Founder & Director", website: "https://sinapse.fi", phone: "+256 752 220999", email: "founder@sinapse.fi",  color: "#ef5455"},
+      { name: "Supreme Marka",  title: "Director", website: "https://supreme.ug", phone: "+256 752 220999", email: "jr@supreme.ug", color: "#c59d5f" },
+      { name: "Ishna", title: "Founder", phone: "+256 752 220999", email: "jr@ishna.co",color: "#174c8f" }
+    ];
+
+    saveContactBtn.addEventListener("click", () => {
+      contactMenu.style.display = contactMenu.style.display === "flex" ? "none" : "flex";
+    });
+
+   function openModal(index) {
+  const b = businesses[index];
+  const modalTitle = document.getElementById("modalTitle");
+  modalTitle.textContent = b.name;
+  modalTitle.style.color = b.color;
+
+  document.getElementById("modalTitleRole").textContent = b.title;
+  
+  document.getElementById("modalPhone").textContent = "Phone: " + b.phone;
+  document.getElementById("modalEmail").textContent = "Email: " + b.email;
+
+  const websiteLink = document.querySelector("#modalWebsite a");
+  websiteLink.href = b.website;
+  websiteLink.textContent = b.website;
+
+  const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:${b.name}\nTITLE:${b.title}\nTEL:${b.phone}\nEMAIL:${b.email}\nURL:${b.website}\nEND:VCARD`;
+  const blob = new Blob([vcf], { type: "text/vcard" });
+  const link = document.getElementById("vcardLink");
+  link.href = URL.createObjectURL(blob);
+
+  contactModal.style.display = "flex";
+  contactMenu.style.display = "none";
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (!isMobileDevice()) {
+    document.body.innerHTML = '<div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:Poppins, sans-serif; font-size:2em; color:#333;">This is a mobile site.</div>';
+  }
+});
+  </script>
+</body>
+</html>
