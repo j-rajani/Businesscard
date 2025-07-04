@@ -148,14 +148,6 @@ body, div, p, h1, h2, h3, a, button {
   </style>
 </head>
 <body>
-  <script>
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (!isMobile) {
-    document.body.innerHTML = "<h2>This site is for mobile only.</h2>";
-    // Optionally, stop JS execution
-    throw new Error("Desktop device not allowed");
-  }
-</script>
   <img src="Jeeten_rajani_1.jpg" alt="Jeeten Rajani" class="half-screen-image" />
   <div class="overlay"></div>
   <div class="name-text">JEETEN<br>RAJANI</div>
@@ -226,12 +218,13 @@ body, div, p, h1, h2, h3, a, button {
   contactModal.style.display = "flex";
   contactMenu.style.display = "none";
 }
-    window.addEventListener('DOMContentLoaded', () => {
+
+
+window.addEventListener('DOMContentLoaded', () => {
   if (!isMobileDevice()) {
     document.body.innerHTML = '<div style="display:flex; justify-content:center; align-items:center; height:100vh; font-family:Poppins, sans-serif; font-size:2em; color:#333;">This is a mobile site.</div>';
   }
 });
   </script>
-
 </body>
 </html>
