@@ -79,20 +79,32 @@ body, div, p, h1, h2, h3, a, button {
       box-shadow: 0 0 10px rgba(255,255,255,0.1);
       text-align: left;
     }
-    #saveContactBtn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: white;
-      color: black;
-      border-radius: 25px;
-      padding: 10px 20px;
-      font-weight: 500;
-      font-size: 0.9em;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 3;
-      cursor: pointer;
-    }
+#saveContactBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 500;
+  font-size: 0.9em;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 3;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+#saveContactBtn .info-icon {
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.3em;
+  user-select: none;
+}
     #contactMenu {
       display: none;
       position: fixed;
@@ -130,13 +142,20 @@ body, div, p, h1, h2, h3, a, button {
       font-family: 'Poppins', sans-serif;
     }
     .modal-inner a {
+      color: black;
+      text-decoration: none;
+    }
+   .modal-inner a#vcardLink {
       display: inline-block;
       margin-top: 10px;
-      background: black;
-      color: white;
       padding: 10px 20px;
-      border-radius: 10px;
+      border-radius: 25px;
+      color: white;
+      font-weight: 700;
+      font-size: 1.2em;
       text-decoration: none;
+      cursor: pointer;
+      user-select: none;
     }
     .modal-inner button {
       padding: 8px 15px;
@@ -161,7 +180,9 @@ body, div, p, h1, h2, h3, a, button {
     <h2>About Me</h2>
     <p>Businessman with 25+ years of experience working and living in East Africa.</p>
   </div>
-  <div id="saveContactBtn">+ Add Contact</div>
+  <div id="saveContactBtn">
+  Contact Info <span class="info-icon">i</span>
+</div>
   <div id="contactMenu" style="display: none;">
     <img src="resized_fctl_logo.jpg" onclick="openModal(0)" />
     <img src="sinapse_logo_1.jpg" onclick="openModal(1)" />
@@ -174,7 +195,7 @@ body, div, p, h1, h2, h3, a, button {
       <p id="modalTitleRole">Title:</p>
       <p id="modalWebsite"><a href="#" target="_blank" rel="noopener noreferrer">Website</a></p>
       <p id="modalPhone">Phone:</p>
-      <p id="modalEmail">Email:</p>
+      <p><a href="" id="modalEmail"></a></p>
       <a id="vcardLink" download>Save Contact</a><br><br>
       <button onclick="document.getElementById('contactModal').style.display='none'">Close</button>
     </div>
@@ -196,6 +217,8 @@ body, div, p, h1, h2, h3, a, button {
     });
 
    function openModal(index) {
+
+
   const b = businesses[index];
   const modalTitle = document.getElementById("modalTitle");
   modalTitle.textContent = b.name;
@@ -206,15 +229,20 @@ body, div, p, h1, h2, h3, a, button {
   document.getElementById("modalPhone").textContent = "Phone: " + b.phone;
   document.getElementById("modalEmail").textContent = "Email: " + b.email;
 
+  const emailLink = document.getElementById("modalEmail");
+  emailLink.href = `mailto:${b.email}`;
+  emailLink.textContent = b.email;
+
   const websiteLink = document.querySelector("#modalWebsite a");
   websiteLink.href = b.website;
   websiteLink.textContent = b.website;
+
 
   const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:${b.name}\nTITLE:${b.title}\nTEL:${b.phone}\nEMAIL:${b.email}\nURL:${b.website}\nEND:VCARD`;
   const blob = new Blob([vcf], { type: "text/vcard" });
   const link = document.getElementById("vcardLink");
   link.href = URL.createObjectURL(blob);
-
+   link.style.backgroundColor = b.color;
   contactModal.style.display = "flex";
   contactMenu.style.display = "none";
 }
