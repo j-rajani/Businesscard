@@ -238,7 +238,16 @@ body, div, p, h1, h2, h3, a, button {
   websiteLink.textContent = b.website;
 
 
-  const vcf = `BEGIN:VCARD\nVERSION:3.0\nFN:${b.name}\nTITLE:${b.title}\nTEL:${b.phone}\nEMAIL:${b.email}\nURL:${b.website}\nEND:VCARD`;
+ const vcf = `BEGIN:VCARD
+VERSION:3.0
+N:Rajani;Jeeten;;;
+FN:Jeeten Rajani
+ORG:${b.name}
+TITLE:Director
+TEL:${b.phone}
+EMAIL:${b.email}
+END:VCARD`;
+
   const blob = new Blob([vcf], { type: "text/vcard" });
   const link = document.getElementById("vcardLink");
   link.href = URL.createObjectURL(blob);
